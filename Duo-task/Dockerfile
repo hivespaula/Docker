@@ -6,7 +6,7 @@ COPY app.py requirements.txt ./
 # Install pip dependencies from requirements
 RUN pip3 install -r requirements.txt
 # Set YOUR_NAME environment variable
-ENV YOUR_NAME=friend
+ENV YOUR_NAME="friend"
 # Expose the correct port
 EXPOSE 5500
 # Create an entrypoint
