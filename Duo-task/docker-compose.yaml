@@ -1,7 +1,23 @@
 version: "3.8"
-services:
- nginx:
-   image: nginx:alpine
-   ports:
-   - target: 80
-     protocol: tcp
+services:  # what containers we need to run
+  flask-app:    # the name of the secion  
+    image: duopyapp:latest
+    build: ./duotask-pyapp
+    ports: 
+    - target: 5500
+      protocol: tcp
+      published: 5500
+    environment:
+      YOUR_NAME: "Paula"
+  nginx:
+    image: nginx:latest
+#    build: ./duotask-nginx-container
+    ports:
+    - target: 80
+      published: 80
+    volumes: 
+      - type: bind
+        source: ./duotask-nginx-container/nginx.conf
+        target: /etc/nginx/nginx.conf
+    depends_on:
+      - "flask-app"
