@@ -7,7 +7,7 @@ pipeline{
         stages{
             stage('Build Image'){
                 steps{
-                    dir('chaperootodo_client') {
+                    dir('jenkins-advanced-intergration-tutorial/chaperootodo_client') {
                     script{
                         if (env.rollback == 'false'){
                             image = docker.build("hivesp/chaperoo-frontend")
