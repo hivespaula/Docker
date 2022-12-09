@@ -28,8 +28,9 @@ pipeline{
             }
             stage('Deploy Application'){
                 steps{
+                    dir('jenkins-advanced-intergration-tutorial/chaperootodo_client') {
                     sh "docker-compose pull && docker-compose up -d"
                 }
-            }
+            }}
         }
 }
